@@ -1,0 +1,101 @@
+% Chapter 3 - Methodology
+% With Sample Figures From Kevin Hughes
+
+\glsresetall % reset the glossary to expand acronyms again
+\chapter[Methodology]{Methodology}\label{ch:Methodology}
+\index{Methodology}
+
+% Methodology
+\section{Methodology}
+\begin{itemize}
+	\item{How does you research work?}
+\end{itemize}
+
+
+The following is an example of a table:
+
+% Example Table
+% I recommend using http://truben.no/latex/table/ to help with making tables
+% reference in the text using \ref{tab.testTable}
+\begin{table}[!htbp]
+	\centering
+	\begin{tabular}{|l|l|l|} % options are l,c,r (left, center, right)
+		\hline
+		Things & Other Things & Last Thing \\
+		\hline
+		X & ~ & ~ \\
+		\hline
+		~ & X & ~ \\
+		\hline
+		~ & ~ & X \\
+		\hline
+	\end{tabular}
+	\caption{Test Table}
+	\label{tab.testTable}
+\end{table}
+
+\clearpage
+
+The following is an example of a flow diagram:  
+
+% Sample Flow Diagram
+\begin{figure}[h]
+	\centering
+	
+	\begin{tikzpicture}[->,>=stealth']
+	
+	% Position of INPUT
+	% Use previously defined 'state' as layout (see preamble)
+	% use tabular for content to get columns/rows
+	% parbox to limit width of the listing
+	\node[state] (INPUT) 
+	{
+		\begin{tabular}{l}
+		\textbf{Write Thesis}\\
+		\parbox{5cm}
+		{
+			Involves learning LaTex
+		}
+		\end{tabular}
+	};
+	
+	\node[state,    	% layout (defined above)
+	text width=7cm, 	% max text width
+	%	yshift=1cm, 		% move cm y
+	xshift=7cm,
+	right of=INPUT,
+	%node distance=4cm,
+	anchor=center] (OUTPUT) 
+	{
+		\begin{tabular}{l}
+		\textbf{Defend Thesis}\\
+		\end{tabular}
+	};
+	
+	% draw the paths and and print some Text below/above the graph
+	\path 
+	(INPUT) 	edge[bend left=20]		node[anchor=south,above]{\textcolor{green}{Submit}}	(OUTPUT)
+	(OUTPUT) 	edge[bend left=20]		node[anchor=south,below]{\textcolor{red}{Make Corrections}}	(INPUT)
+	; % END PATH
+	
+	\draw 
+	(INPUT) to [out=150,in=30] 	node[above,midway]{\textcolor{blue}{Add Coffee}} (INPUT)
+	; % END DRAW
+	
+	\end{tikzpicture}
+	\caption{A sample flow diagram} 
+	\label{fig:SampleFlowDiagram}
+\end{figure}
+
+
+NOTE! The syntax for figures is:
+\begin{center}
+{\textbackslash}begin\{figure\}[placement specifier]\\
+	... figure contents ...\\
+{\textbackslash}end\{figure\}\\
+\end{center}
+
+See the wikibook on latex figures to see all the possibilities:\\
+https://en.wikibooks.org/wiki/LaTeX/Floats,\_Figures\_and\_Captions\\
+
+NOTE! There is an easier way to make diagrams than by coding them (as is demonstrated by the flow diagram below). See this website: https://www.draw.io/ will help you create an diagram easily. All you need to do is insert it in as a .jpg file (see the example insertion of a figure in \ref{fig:DEFENCE} (Appendix B)).
