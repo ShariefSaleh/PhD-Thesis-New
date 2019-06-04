@@ -40,6 +40,7 @@
 %*************************************************************************************************************
 % -> This section defines the basic spacing options for the thesis document. 
 
+\usepackage{indentfirst} % Indent first paragraph after header
 % Define Spacing
 \usepackage{setspace} % For use of \singlespacing and \doublespacing
 
@@ -68,16 +69,16 @@
 
 \usepackage[subfigure]{tocloft}
 \usepackage{tocloft}
+\usepackage{multicol}
+
 \renewcommand{\cftchappresnum}{Chapter }
 \renewcommand{\cftchapaftersnum}{:}
 \renewcommand{\cftchapnumwidth}{7em}
 
-
-%*******************************************************************************
-% APPENDIX
-%*******************************************************************************
-% -> This section defines formating for appendix
-\usepackage[titletoc]{appendix}
+% for formatting Table of Contents entry for Appendix, example: Appendix 1: Stuff
+\newcommand*\updatechaptername{%
+   \addtocontents{toc}{\protect\renewcommand*\protect\cftchappresnum{Appendix }}
+}
 
 %*******************************************************************************
 % FOOTNOTES
@@ -137,8 +138,11 @@
 %*******************************************************************************
 % -> Import and configure packages for math
 \usepackage{mathrsfs}		 % For Symbols
+\usepackage{amssymb}		 % For More Symbols
+\usepackage{amsfonts}		 % For Other Symbols
 \usepackage{amsmath}         % For Equations
-\usepackage{amsthm}          % For Theorems & definitions
+\usepackage{amsthm}          % For Theorems & Definitions
+
 
 % Using the amsthm package, define a new theorem environment for my
 % definition.  * means don't number it.
@@ -146,17 +150,20 @@
 \usepackage{cases}           % to make numbered cases (equations)
 \usepackage{calc}            % Used with the Ventry environment defined below.
 
-
 %*******************************************************************************
-% FLOATS AND FIGURES
+% FLOATS, PLOTS, AND FIGURES
 %*******************************************************************************
 % -> This section defines and configures packages for various styles of floating objects and figures. 
  
-\usepackage{graphicx}        % for graphic images (use \includegraphics[...]{file.eps})
-\usepackage{subfigure}       % for subfigures (figures within figures)
-\usepackage{boxedminipage}   % to make boxed minipages, i.e., boxes around figures
-\usepackage{rotate}          % for use of \begin{sideways} and \end{sideways}
-\usepackage{listings}        % for use of printing code blocks
+\usepackage{graphicx}       % for graphic images (use \includegraphics[...]{file.eps})
+%\usepackage{subfigure}      % for subfigures (figures within figures)
+\usepackage{subfig}			% for subfigures (figures within figures). Same as subfigures except it works.
+\usepackage{wrapfig}		% for wrapping text around figures
+%\usepackage{boxedminipage}  % to make boxed minipages, i.e., boxes around figures
+\usepackage{rotate}         % for use of \begin{sideways} and \end{sideways}
+\usepackage{listings}       % for use of printing code blocks
+\usepackage{pgfplots}		% for plots
+\usepackage{pdfpages}		% for importing PDFs
 
 % Define how the ``listings'' to look.
 %\lstset{basicstyle=\footnotesize,, numbers=left, numberstyle=\small, stepnumber=1, numbersep=5pt, showspaces=false, lineskip=-1pt}
@@ -190,13 +197,18 @@
 
 \usepackage{threeparttable}
 
+\usepackage{lscape}			% For landscape
+\usepackage{adjustbox}		% To adjust table width
+\usepackage{multirow}		% For merging and splitting table cells
+
 %*******************************************************************************
 % CAPTIONS
 %*******************************************************************************
 % ->  This section defines captions
 
-\usepackage[hang]{caption}   % Package used to make my captions 'hang', i.e., wrap
-                             % around, but not under the name of the caption.
+\usepackage{caption}   % Package used to make my captions 'hang', i.e., wrap around, but not under the name of the caption.
+%\usepackage[justification=centering]{caption} % Captions that are centered
+                             
 
 % Find that the captions are too far from my verbatim figures, but if
 % I change it to 0, then the captions are too close for my other types
@@ -219,6 +231,8 @@
                              
 \usepackage{changebar}       % Way of indicating modifications by putting bars in the
                              % margin.  Read about it in "The Latex Companion".
+                             
+\usepackage{enumitem}		% For enumerated lists
 
 %*******************************************************************************
 % REFERENCES ETC.
@@ -245,7 +259,7 @@
 % ->  This section defines imports for block diagrams and flow charts
 
 \usepackage{tikz}
-\usetikzlibrary{arrows,automata}
+\usetikzlibrary{arrows,automata,arrows.meta}
 
 % Block Diagram
 \tikzstyle{block} = [draw,fill=blue!20,minimum size=2em]
@@ -254,8 +268,8 @@
 
 % Flow Charts
 \usepackage{pgf}
-\usepackage[utf8]{inputenc}
-\usetikzlibrary{positioning}
+\usepackage[utf8x]{inputenc}
+\usetikzlibrary{positioning,calc}
 \tikzset{
 	state/.style={
 		rectangle,
@@ -275,8 +289,10 @@
 % Uncomment these next two lines for linkback to citation pages in biblio
 % \renewcommand*\backref[1]{\ifx#1\relax \else \linebreak Cited on page(s): #1. \fi}
 
-\hypersetup{colorlinks=true,  % Change links to being coloured text, no boxes
+\hypersetup{
+	colorlinks=true,  % Change links to being coloured text, no boxes
 	linkcolor=blue,
+	urlcolor=blue,
 }
 % Neat package to turn href, ref, cite, gloss entries
 % into hyperlinks in the dvi file.

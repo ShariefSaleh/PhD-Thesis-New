@@ -6,7 +6,7 @@
 % Requisitioned By: Professor Michael Greenspan
 % Prepared By: Ian Maquignaz M.Eng, MASc
 
-% Template Version 1.0 - September 2017
+% Template Version 2.0 - September 2017\9
 
 % >>> OPEN THIS FILE IN TeXstudio TO START WRITTING YOUR THESIS! <<< %
 % Though Note! You should not need to edit this file (asside from section "0.2 - TITLE PAGE"). Edit the individual files that are loaded. 
@@ -90,13 +90,13 @@
 \PageFigurestrue
 
 %*******************************************************************************
-% 0.6.6 - List of Code Snippets
+% 0.6.5 - List of Code Snippets
 %*******************************************************************************
 % The List of Code Snippets
 \PageCodeSnippetstrue
 
 %*******************************************************************************
-% 0.6.5 - Glossary
+% 0.6.6 - Glossary
 %*******************************************************************************
 % The Glossary 
 
@@ -108,14 +108,20 @@
 
 % This line forces all entries into glossary, even if they have not been referenced
 % UNCOMMENT THIS LINE TO INCLUDE ALL GLOSSARY ITEMS (Not just those referenced)
-\glsaddall
+%\glsaddall
 
-% UNCOMMENT THE GLOSSARIES TO BE PRINTED (IF not using \PageGlossariestrue) %
+% UNCOMMENT INDIVIDUAL GLOSSARIES TO BE PRINTED (IF not using \PageGlossariestrue) %
 %\printglossaries % Prints ALL glossaries.
 %\printglossary % Print the terms glossary
 %\printglossary[title = Glossary of Terms] % Print the terms glossary
 %\printglossary[type=symbol, title=Glossary of Symbols] % Prints the acronym glossary
 %\printglossary[type=\acronymtype,title=Glossary of Abbreviations] % Prints the abbreviation glossary
+
+%*******************************************************************************
+% 0.6.7 - List of Equations
+%*******************************************************************************
+% Prints a list of all equations
+\PageEquationstrue
 
 %*******************************************************************************
 % 0.6.x - Apply Apply After Preface - DO NOT MODIFY
@@ -145,23 +151,28 @@
 
 % Print Bibliogrpahy
 \phantomsection
-\bibliographystyle{plain}
-\bibliography{4_References/References}
+
+% Uncomment for a plain bibliography else use IEEE style below
+%\bibliographystyle{plain}
+%\bibliography{4_References/References}
+
+% IEEE Bibliography
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,4_References/References}
+
 \clearpage
 
 %*******************************************************************************
 % 0.9.1 - APPENDICES
 %*******************************************************************************
-\begin{appendices}
-	
-	% Appendix A
-	\include{5_Appendices/Appendix_A/Appendix_A}
-	
-	% Appendix B
-	\include{5_Appendices/Appendix_B/Appendix_B}
-	
-\end{appendices}
+\updatechaptername
+\appendix
 
+% Appendix A
+\include{5_Appendices/Appendix_A/Appendix_A}
+
+% Appendix B
+\include{5_Appendices/Appendix_B/Appendix_B}
 
 %*******************************************************************************
 % 0.9.2 - INDEX

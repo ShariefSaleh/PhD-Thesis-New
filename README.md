@@ -5,7 +5,7 @@ Queen's University
 
 Requisitioned By: Professor Michael Greenspan
 
-Template Version 1.0 - September 2017
+Template Version 2.0 - June 2019
 Prepared By: Ian Maquignaz M.Eng, MASc
 
 

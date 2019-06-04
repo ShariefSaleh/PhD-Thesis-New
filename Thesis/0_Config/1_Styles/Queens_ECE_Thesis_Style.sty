@@ -115,9 +115,11 @@ Documentation:
 with the `report' or `book' document styles}{You should probably read the
 quthesis documentation.}}{}
 
+% IK PRINTING FOR A BOOK:
 % We need 1" margins except on the binding edge, where it is 1 1/2"
 % Theses are single-sided, so we don't care about \evensidemargin
-\oddsidemargin 0.5in \evensidemargin 0in
+%\oddsidemargin 0.5in \evensidemargin 0in
+
 \marginparwidth 40pt \marginparsep 10pt
 \topmargin 0pt \headsep .5in
 \textheight 8.1in \textwidth 6in
@@ -162,15 +164,15 @@ quthesis documentation.}}{}
 \def\copyrightyear#1{\gdef\@copyrightyear{#1}}
 
 % Document Parameters - DEFAULT PARAMETERS
-\def\@title{[Your Thesis Title]}
-\def\@author{[Your Name]}
+\def\@title{A LaTex Thesis Template}
+\def\@author{Queen's Department of ECE}
 \def\@dept{Department of Electrical and Computer Engineering}
 \def\@degree{Master of Applied Science}
-\def\@supervisor{[Supervisor's Name]}
+\def\@supervisor{A Professor}
 \def\@submitdate{\ifcase\the\month\or
   January\or February\or March\or April\or May\or June\or
   July\or August\or September\or October\or November\or December\fi
-  \space \number\the\year}
+  ,\space \number\the\year}
 \def\@copyrightyear{\number\the\year}
 
 % Declare If Statements for Optional Pages
@@ -179,6 +181,7 @@ quthesis documentation.}}{}
 \newif\ifPageGlossaries
 \newif\ifPageContents
 \newif\ifPageCodeSnippets
+\newif\ifPageEquations
 
 % Set Default States for Optional Pages
 \PageFiguresfalse 
@@ -186,6 +189,7 @@ quthesis documentation.}}{}
 \PageGlossariesfalse
 \PageContentsfalse
 \PageCodeSnippetsfalse
+\PageEquationsfalse
 
 % Create the PDF
 \usepackage[bookmarks,pdfauthor={\@author}, pdftitle={Thesis}]{hyperref}
@@ -195,24 +199,26 @@ quthesis documentation.}}{}
     \thispagestyle{empty}%
     \renewcommand{\baselinestretch}{1}
     \begin{center}
-        {\Large\sc\@title}\\[1in]
-        \begin{figure}[!htbp]
-			\centering
-			\includegraphics[width = 2in]{0_Config/1_Styles/QueensLogo_black.png}
-		\end{figure}
-		\mbox{}\\[0.5in]
+        {\Large\sc\@title}\\[0.7in]
+		\mbox{}\\[1.0in]
         {\large\sc By \@author\\}
-        {\@degree\\}
-        {Supervised by \@supervisor\\}
     \end{center}
-    \renewcommand{\baselinestretch}{1.6}
+
+	\renewcommand{\baselinestretch}{1.6}
+
+	\begin{center}
+		\mbox{}\\[1.0in]
+		A thesis submitted to the Graduate Program in \@dept\space in conformity with the requirements for the Degree of \@degree
+	\end{center}
+
+    
     \begin{center}
     	\singlespacing
-    	\mbox{}\\[0.7in]
-        \@dept\\ 
+    	\mbox{}\\[0.7in] 
         Queen's University\\
         Kingston, Ontario, Canada\\
-        \@submitdate\\
+        Final Submission: \@submitdate\\
+        \mbox{}\\[0.3in]
         Copyright \copyright\ \@author, \@copyrightyear
     \end{center}
     \clearpage
@@ -229,12 +235,38 @@ quthesis documentation.}}{}
 \def\prefacesection#1{
     \clearpage
     \addcontentsline{toc}{chapter}{#1}
+    \chapter*{#1}
+}
+
+\fancypagestyle{CustomPageStyle}{%
+	\fancyhf{}% Clear header and footer
+	\fancyhead[L]{\rightmark}
+	\fancyhead[R]{\thepage}
+	\fancyfoot[C]{\@author\space- \@dept}% Custom footer
+	\renewcommand{\headrulewidth}{0.5pt}% Line at the header visible
+	\renewcommand{\footrulewidth}{0.5pt}% Line at the footer visible
+
+%\fancyhf{}
+
+% Header
+%\lhead{{\rightmark}}
+%\setlength{\headheight}{15pt}
+%\renewcommand{\headrulewidth}{0.5pt}
+%\rhead{\bfseries{\thepage}}
+%\chead{\bfseries{\@author}}
+%\chead{Queen's University}
+
+% Footer
+%\renewcommand{\footrulewidth}{0.5pt}
+%\cfoot{\@author\space- \@dept}
+%\cfoot{\bfseries{\@author}}
+
 }
 
 % Define Format - After Preface
 \def\afterpreface{
 	\clearpage
-    \pagenumbering{Roman}
+    \pagenumbering{roman}
     
     % Table of Contents Page
     \ifPageContents
@@ -268,6 +300,15 @@ quthesis documentation.}}{}
 	    \clearpage
     \fi
     
+    % List of Equations
+    \ifPageEquations
+    	\addcontentsline{toc}{chapter}{List of Equations}
+    	 \index{List of Equations}
+	    \newfloat{Equation}{!h}{equ}[chapter]
+	    \newcommand{\listequationsname}{List of Equations}
+	    \listof{Equation}{\listequationsname}
+    \fi
+    
     % Glossary Page
     \ifPageGlossaries
 		\index{Glossary of Terms}
@@ -279,16 +320,10 @@ quthesis documentation.}}{}
         \clearpage
     \fi
     
+    
     \pagenumbering{arabic}    
-    \pagestyle{fancyplain}
-    \fancyhf{}
-    \setlength{\headheight}{15pt}
-    \renewcommand{\headrulewidth}{0.5pt}
-    \renewcommand{\footrulewidth}{0.5pt}
-    \lhead{\bfseries{\rightmark}}
-    \chead{\@author}
-    \rhead{\bfseries{\thepage}}
-    \cfoot{Queen's University - \@dept}
+    %\pagestyle{fancyplain}
+    \pagestyle{CustomPageStyle}
 }
 
 % Redefine \thebibliography to go to a new page and put an entry in the

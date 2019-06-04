@@ -1,6 +1,3 @@
--> File Location:
-ECE Thesis Template\Thesis
-
 -> Description
 
 This folder (labeled "Thesis") contains the entirety of your thesis. Each of the folders above contains the content of your thesis broken into different files. Below, you should find two files of interest: Thesis.tex and Thesis.pdf. 
