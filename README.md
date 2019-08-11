@@ -8,6 +8,9 @@ Requisitioned By: Professor Michael Greenspan
 Template Version 2.0 - June 2019
 Prepared By: Ian Maquignaz M.Eng, MASc
 
+Updated:
+August 2019 - Ian Maquignaz - Fixed small bug for Yubo Qiu
+
 
 -> Description:
 
