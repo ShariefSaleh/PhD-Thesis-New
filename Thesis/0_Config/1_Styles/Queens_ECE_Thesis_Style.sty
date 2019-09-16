@@ -44,9 +44,6 @@ Example of use:
          ...
     \chapter{Conclusions}
          ...
-    \bibliographystyle{plain}
-    \bibliography{mybib}
-         ...
     \appendix
     \chapter{A Long Proof}
         ...
@@ -245,28 +242,11 @@ quthesis documentation.}}{}
 	\fancyfoot[C]{\@author\space- \@dept}% Custom footer
 	\renewcommand{\headrulewidth}{0.5pt}% Line at the header visible
 	\renewcommand{\footrulewidth}{0.5pt}% Line at the footer visible
-
-%\fancyhf{}
-
-% Header
-%\lhead{{\rightmark}}
-%\setlength{\headheight}{15pt}
-%\renewcommand{\headrulewidth}{0.5pt}
-%\rhead{\bfseries{\thepage}}
-%\chead{\bfseries{\@author}}
-%\chead{Queen's University}
-
-% Footer
-%\renewcommand{\footrulewidth}{0.5pt}
-%\cfoot{\@author\space- \@dept}
-%\cfoot{\bfseries{\@author}}
-
 }
 
 % Define Format - After Preface
 \def\afterpreface{
 	\clearpage
-    \pagenumbering{roman}
     
     % Table of Contents Page
     \ifPageContents
@@ -319,7 +299,6 @@ quthesis documentation.}}{}
         \printglossary[type=\acronymtype,title=Glossary of Abbreviations] % Prints the abbreviation glossary
         \clearpage
     \fi
-    
     
     \pagenumbering{arabic}    
     %\pagestyle{fancyplain}
