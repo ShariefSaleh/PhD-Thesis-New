@@ -1,15 +1,15 @@
-MASc & PhD Thesis Template
+**MASc & PhD Thesis Template**
 
-Department of Electrical & Computer Engineering (ECE)
-Queen's University 
+*Department of Electrical & Computer Engineering (ECE)
+Queen's University*
+
+
+
+Template Version 2.0 - Created June 2019
 
 Requisitioned By: Professor Michael Greenspan
 
-Template Version 2.0 - June 2019
-Prepared By: Ian Maquignaz M.Eng, MASc
-
-Updated:
-August 2019 - Ian Maquignaz - Fixed small bug for Yubo Qiu
+Prepared By: Ian Maquignaz BASc, M.Eng, MASc
 
 
 -> Description:
@@ -25,7 +25,9 @@ Windows: http://www.texstudio.org/
 Ubuntu: sudo apt-get install texstudio
 Other: http://www.texstudio.org/#download
 
+-> Found a bug or want to contribute?
 
+We would be thrilled if you contributed to this project! If you are a member of Queen's Faculty of Applied Science (FEAS) and you have an FEAS GitLab account, all you need to do is send a request to Ian Maquignaz (@9im14) to be added to the project.
 
  
 
