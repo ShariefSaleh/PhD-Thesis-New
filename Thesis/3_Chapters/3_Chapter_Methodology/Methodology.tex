@@ -20,13 +20,14 @@
 \section[Examples]{Examples of things}
 
 \subsection{Tables}
-The following is an example of a table:
+Table \ref{tab:testTable} is an example of a table:
 
 % Example Table
 % I recommend using http://truben.no/latex/table/ to help with making tables
 % reference in the text using \ref{tab.testTable}
 \begin{table}[!htbp]
 	\centering
+	\caption{Test Table}
 	\begin{tabular}{|l|l|l|} % options are l,c,r (left, center, right)
 		\hline
 		Things & Other Things & Last Thing \\
@@ -38,8 +39,7 @@ The following is an example of a table:
 		~ & ~ & X \\
 		\hline
 	\end{tabular}
-	\caption{Test Table}
-	\label{tab.testTable}
+	\label{tab:testTable}
 \end{table}
 
 \clearpage
